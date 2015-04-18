@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>  To-Do List</title>
+	<title> To-Do List</title>
 	<link rel="stylesheet" type='text/css' href="CSS/main.css">
-	<link rel="stylesheet" type="text/css" href="CSS/normalize.css">
-	<link rel="stylesheet" type="text/css" href="CSS/reset.css">
 </head>
 <body>
 <div class="wrap">
@@ -21,7 +19,7 @@ if ($numrows>0) {
 			$task_name = $row["task"];
 			echo '<li>
 			<span> '.$task_name.'</span>
-			<img id="'.$task_id.'"" class="delete button" width="10px" src="images/close.svg"/>
+			<img id="'.$task_id.'"" class="delete-button" width="10px" src="images/close.svg"/>
 			</li>';
 		}
 	}	
@@ -35,16 +33,16 @@ if ($numrows>0) {
 </form>
 </div>
 </body>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 <script>
 	add_task(); //calling the add task function
 function add_task(){
 	$(".add-new-task").submit(function(){
 var new_task = $(".add-new-task input[name=new-task]").val();
-if(new_task != ""){
+if(new_task !== ""){
 	$.post("includes/add-task.php", {task: new_task}, function(data){
-$(("add-new-task input[name=new-task]").val();
-	$(data).appendTo("task-list ul").hide().fadeIn();
+$("add-new-task input[name=new-task]").val();
+	$(data).appendTo(".task-list ul").hide().fadeIn();
 	});
 }
 return false;
